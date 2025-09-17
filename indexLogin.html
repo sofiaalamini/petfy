@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petfy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleLogin.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/12/12638.png" type="image/x-icon">
+</head>
+<body>
+
+<!-- Tela 1 -->
+<section class="tela-login" id="tela1">
+    <img src="https://i.pinimg.com/736x/c0/b3/26/c0b326748b7dc27b302f6d5924e72dd0.jpg" alt="Cachorro" class="bg-img">
+    <div class="conteudo">
+        <h1 class="logo">PETFY</h1>
+        <button class="btn-principal" onclick="mostrarTela2()">Entrar</button>
+        <button class="btn-secundario">Não tem uma conta? <span class="linha-btn-secundario">Clique aqui</span></button>
+        <div class="social">
+            <button class="btn-social google">G+</button>
+            <button class="btn-social facebook">f</button>
+        </div>
+    </div>
+</section>
+
+<!-- Tela 2 -->
+<section class="tela-login" id="tela2" style="display:none;">
+    <img src="https://i.pinimg.com/736x/c0/b3/26/c0b326748b7dc27b302f6d5924e72dd0.jpg" alt="Cachorro" class="bg-img2">
+    <div class="conteudo">
+        <h1 class="logo2">PETFY</h1>
+        <input type="text" placeholder="Usuário" class="input-campo">
+        <input type="password" placeholder="Senha" class="input-campo2">
+        <button class="btn-principal" onclick="entrar()">Entrar</button>
+        <a href="#" class="link-branco">Esqueceu a senha?</a>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
