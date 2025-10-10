@@ -23,14 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnVerMais = document.querySelector(".btn-ver-mais");
   const petsSection = document.querySelector(".pets");
 
-  if (btnVerMais) {
-    btnVerMais.addEventListener("click", () => {
-      const novoPet = document.createElement("div");
-      novoPet.classList.add("card-image", "card", "card-content");
-      novoPet.innerHTML = `
-        <span class="tag macho">Macho</span>
+if (btnVerMais) {
+  btnVerMais.addEventListener("click", () => {
+    const novoPet = document.createElement("div");
+    novoPet.classList.add("card");
+
+    novoPet.innerHTML = `
+      <div class="card-image">
         <span class="tag docil">DÓCIL</span>
+        <span class="tag macho">Macho</span>
         <img src="./assets/thor.jpg" alt="Thor">
+      </div>
+
+      <div class="card-content">
         <h3>Thor</h3>
         <p class="info">Vira-Lata • 2 anos</p>
         <p class="descricao">
@@ -38,10 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
         </p>
         <p class="localizacao">Curitiba - PR</p>
         <button class="btn-adotar">Quero adotar</button>
-      `;
-      petsSection.insertBefore(novoPet, btnVerMais);
-    });
-  }
+      </div>
+    `;
+
+    petsSection.insertBefore(novoPet, btnVerMais);
+  });
+}
 });
 
 // ======== ESTRELAS ========
