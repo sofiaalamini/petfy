@@ -1,103 +1,325 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styleTelas.css">
-  <title>Petfy</title>
-</head>
-<body>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/12/12638.png" type="image/x-icon">
+    <link rel="stylesheet" href="styleTelas.css" />
+    <title>Petfy</title>
+  </head>
+  <body>
+    <header>
+      <h1>PETFY</h1>
+      <div class="menu" onclick="toggleMenu()">&#9776;</div>
+      <nav id="menu">
+        <a href="#hero">Início</a>
+        <a href="#pets">Pets</a>
+        <a href="#historias">Histórias</a>
+        <a href="#como-adotar">Como Adotar</a>
+        <a href="#acessibilidade">Acessibilidade</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+    </header>
 
-  <header>
-    <h1>PETFY</h1>
-    <div class="menu">&#9776;</div>
-  </header>
+    <!-- Tela 1 -->
+    <section class="hero" id="hero">
+      <h2>Dê um lar para um pet que precisa de amor</h2>
+      <p>
+        Nossa missão é conectar animais abandonados a famílias amorosas.
+        Junte-se a nós e mude uma vida!
+      </p>
+      <div class="buttons">
+        <button>Conheça nossos pets</button>
+        <button class="outline">Como adotar</button>
+      </div>
+    </section>
 
-  <!-- Tela 1 -->
-  <section class="hero">
-    <h2>Dê um lar para um pet que precisa de amor</h2>
-    <p>Nossa missão é conectar animais abandonados a famílias amorosas. Junte-se a nós e mude uma vida!</p>
-    <div class="buttons">
-      <button>Conheça nossos pets</button>
-      <button class="outline">Como adotar</button>
-    </div>
-  </section>
+    <section class="stats" id="estatisticas">
+      <div>
+        <h2>0</h2>
+        <p>Pets adotados</p>
+      </div>
+      <div>
+        <h2>0</h2>
+        <p>Pets disponíveis</p>
+      </div>
+      <div>
+        <h2>0</h2>
+        <p>Famílias felizes</p>
+      </div>
+    </section>
 
-  <section class="stats">
-    <div>
-      <h2>0</h2>
-      <p>Pets adotados</p>
-    </div>
-    <div>
-      <h2>0</h2>
-      <p>Pets disponíveis</p>
-    </div>
-    <div>
-      <h2>0</h2>
-      <p>Famílias felizes</p>
-    </div>
-  </section>
-
-  <section class="why-adopt">
-    <h3>Por que adotar?</h3>
-    <p>Adotar um pet é um ato de amor que transforma vidas. Conheça os benefícios de dar um lar a um animal necessitado.</p>
-    <div class="benefits">
-      <div class="benefit">
-        <div class="benefit-icon">❤️</div>
-        <div class="benefit-text">
-          <h4>Você salva uma vida</h4>
-          <p>Ao adotar, você está dando uma segunda chance a um animal que precisa de um lar amoroso.</p>
+    <section class="why-adopt" id="por-que-adotar">
+      <h3>Por que adotar?</h3>
+      <p>
+        Adotar um pet é um ato de amor que transforma vidas. Conheça os
+        benefícios de dar um lar a um animal necessitado.
+      </p>
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">❤️</div>
+          <div class="benefit-text">
+            <h4>Você salva uma vida</h4>
+            <p>
+              Ao adotar, você está dando uma segunda chance a um animal que
+              precisa de um lar amoroso.
+            </p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">💊</div>
+          <div class="benefit-text">
+            <h4>Faz bem para a saúde</h4>
+            <p>
+              Estudos mostram que ter um pet reduz o estresse, a pressão
+              arterial e aumenta a sensação de bem-estar.
+            </p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-text">
+            <h4>Economiza recursos</h4>
+            <p>
+              A adoção é mais acessível que a compra e você ainda ajuda a
+              reduzir o comércio ilegal de animais.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="benefit">
-        <div class="benefit-icon">💊</div>
-        <div class="benefit-text">
-          <h4>Faz bem para a saúde</h4>
-          <p>Estudos mostram que ter um pet reduz o estresse, a pressão arterial e aumenta a sensação de bem-estar.</p>
+    </section>
+
+    <!-- Tela 2 -->
+    <section class="how-to-adopt " id="como-adotar">
+      <h2>Como adotar</h2>
+      <p class="description">
+        Nosso processo de adoção é simples e pensado para garantir o melhor
+        match entre pet e família.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <h3>1</h3>
+          <h4>Escolha seu pet</h4>
+          <p>
+            Navegue pela nossa galeria e encontre aquele pet especial que
+            combina com você.
+          </p>
+        </div>
+        <div class="step">
+          <h3>2</h3>
+          <h4>Preencha o formulário</h4>
+          <p>
+            Nos conte sobre você e sua rotina para garantirmos que será um bom
+            match.
+          </p>
+        </div>
+        <div class="step">
+          <h3>3</h3>
+          <h4>Visite e conheça</h4>
+          <p>
+            Agendamos uma visita para você conhecer pessoalmente o pet e tirar
+            dúvidas.
+          </p>
+        </div>
+        <div class="step">
+          <h3>4</h3>
+          <h4>Leve para casa</h4>
+          <p>
+            Assinamos os termos e seu novo melhor amigo pode ir para seu lar
+            definitivo!
+          </p>
         </div>
       </div>
-      <div class="benefit">
-        <div class="benefit-icon">💰</div>
-        <div class="benefit-text">
-          <h4>Economiza recursos</h4>
-          <p>A adoção é mais acessível que a compra e você ainda ajuda a reduzir o comércio ilegal de animais.</p>
+    </section>
+    <!-- TELA 3 - PETS -->
+    <section class="pets" id="pets">
+      <h2>Conheça nossos pets</h2>
+      <p>
+        Todos estão esperando por um lar cheio de amor. Clique em um pet para
+        saber mais sobre ele.
+      </p>
+
+      <div class="card">
+        <div class="card-image">
+          <img src="./assets/chicle.avif" alt="Chicle" />
+          <span class="tag docil">DÓCIL</span>
+          <span class="tag macho">Macho</span>
+        </div>
+        <div class="card-content">
+          <h3>Chicle</h3>
+          <p class="info">Gato Malhado Comum • 3 anos</p>
+          <p class="descricao">
+            Chicle é um amor de gato, super brincalhão e sociável. Adora
+            crianças e outros animais.
+          </p>
+          <p class="localizacao">Cascavel - PR</p>
+          <button class="btn-adotar">Quero adotar</button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Tela 2 -->
-  <section class="how-to-adopt">
-    <h2>Como adotar</h2>
-    <p class="description">Nosso processo de adoção é simples e pensado para garantir o melhor match entre pet e família.</p>
+      <div class="card">
+        <div class="card-image">
+          <img src="./assets/lolla.webp" alt="Lolla" />
+          <span class="tag calma">CALMA</span>
+          <span class="tag femea">Fêmea</span>
+        </div>
+        <div class="card-content">
+          <h3>Lolla</h3>
+          <p class="info">Vira-Lata • 5 anos</p>
+          <p class="descricao">
+            Lolla é muito amigável e carinhosa, ótima companhia para toda a
+            família.
+          </p>
+          <p class="localizacao">Rio de Janeiro - RJ</p>
+          <button class="btn-adotar">Quero adotar</button>
+        </div>
+      </div>
 
-    <div class="steps">
-      <div class="step">
-        <h3>1</h3>
-        <h4>Escolha seu pet</h4>
-        <p>Navegue pela nossa galeria e encontre aquele pet especial que combina com você.</p>
-      </div>
-      <div class="step">
-        <h3>2</h3>
-        <h4>Preencha o formulário</h4>
-        <p>Nos conte sobre você e sua rotina para garantirmos que será um bom match.</p>
-      </div>
-      <div class="step">
-        <h3>3</h3>
-        <h4>Visite e conheça</h4>
-        <p>Agendamos uma visita para você conhecer pessoalmente o pet e tirar dúvidas.</p>
-      </div>
-      <div class="step">
-        <h3>4</h3>
-        <h4>Leve para casa</h4>
-        <p>Assinamos os termos e seu novo melhor amigo pode ir para seu lar definitivo!</p>
-      </div>
-    </div>
-  </section>
+      <button class="btn-ver-mais">Ver mais pets</button>
+    </section>
 
-</body>
+    <!-- TELA 4 - HISTÓRIAS -->
+    <section id="historias" class="historias">
+      <h2>Histórias de sucesso</h2>
+
+      <div class="historia">
+        <h3>Ana Carolina</h3>
+        <p>“Adotar o Thor foi a melhor decisão da minha vida...”</p>
+        <div class="estrelas">
+          <svg class="estrela" viewBox="0 0 24 24" data-star="1">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="2">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="3">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="4">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="5">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="historia">
+        <h3>Carlos Eduardo</h3>
+        <p>“Depois que a Mel chegou trouxe alegria pra casa...”</p>
+        <div class="estrelas">
+          <svg class="estrela" viewBox="0 0 24 24" data-star="1">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="2">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="3">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="4">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="5">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="historia">
+        <h3>Família Silva</h3>
+        <p>“A Luna se tornou parte da nossa família...”</p>
+        <div class="estrelas">
+          <svg class="estrela" viewBox="0 0 24 24" data-star="1">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="2">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="3">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="4">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+          <svg class="estrela" viewBox="0 0 24 24" data-star="5">
+            <polygon
+              points="12,2 15,9 22,9 17,14 19,22 12,18 5,22 7,14 2,9 9,9"
+            />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- TELA 5 - ACESSIBILIDADE -->
+    <section id="acessibilidade" class="acessibilidade">
+      <h2>Acessibilidade</h2>
+      <div class="bloco">
+        <h3>Visualização</h3>
+        <label>Tamanho da fonte</label>
+        <input type="range" min="14" max="24" value="16" id="fontRange" />
+        <p>Tema de cores:</p>
+        <div class="temas">
+          <button onclick="setTheme('padrao')">Padrão</button>
+          <button onclick="setTheme('escuro')">Escuro</button>
+          <button onclick="setTheme('daltonico')">Daltonico</button>
+        </div>
+      </div>
+      <div class="bloco">
+        <h3>Recursos de áudio</h3>
+        <label
+          ><input type="checkbox" id="descImg" /> Descrição de imagens</label
+        ><br />
+        <label><input type="checkbox" id="feedback" /> Feedback sonoro</label>
+      </div>
+      <button class="btn salvar">Salvar</button>
+    </section>
+
+    <!-- TELA 6 - DÚVIDAS / CONTATO -->
+    <section id="duvidas" class="duvidas">
+      <h2>Tire suas dúvidas</h2>
+      <p><strong>📞 (45) 98765-4321</strong><br />📧 contato@petfy.org.br</p>
+      <form>
+        <input type="text" placeholder="Seu nome" required />
+        <input type="email" placeholder="Seu email" required />
+        <input type="text" placeholder="Assunto" required />
+        <textarea placeholder="Mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+    <script src="script.js"></script>
+  </body>
 </html>

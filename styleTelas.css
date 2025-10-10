@@ -1,187 +1,452 @@
 * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Lato", sans-serif;
-    }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
 
-    body {
-      background-color: #f5f5f5;
-      color: #000;
-    }
+body {
+  background-color: #f5f5f5;
+  color: #000;
+}
 
-    header {
-      position: sticky;
-      top: 0;
-      background-color: #fff;
-      border-bottom: 5px solid #9a6a44;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      z-index: 100;
-    }
+header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  border-bottom: 5px solid #9a6a44;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  z-index: 100;
+}
 
-    header h1 {
-      color: #9a6a44;
-      font-size: 1.5rem;
-    }
+header h1 {
+  color: #9a6a44;
+  font-size: 1.5rem;
+}
 
-    .menu {
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #9a6a44;
-    }
+.menu {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #9a6a44;
+  transition: color 0.3s;
+}
 
-    section {
-      padding: 1.5rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+.menu:hover {
+  color: #6e4b2c;
+}
 
-    /* Tela 1 */
-    .hero {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
+/* Menu mobile */
+nav {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
 
-    .hero h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
+nav.show {
+  display: flex;
+}
 
-    .hero p {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      color: #555;
-    }
+nav a {
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  color: #9a6a44;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease;
+}
 
-    .hero .buttons {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
+nav a:hover {
+  background: #9a6a44;
+  color: #fff;
+}
 
-    .hero button {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      border: 2px solid #9a6a44;
-      background-color: #9a6a44;
-      color: #fff;
-      cursor: pointer;
-      font-weight: bold;
-    }
+section {
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-    .hero button.outline {
-      background-color: #fff;
-      color: #9a6a44;
-    }
+/* Tela 1 */
+.hero {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
 
-    .stats {
-      background-color: #9a6a44;
-      color: #fff;
-      display: flex;
-      justify-content: space-around;
-      padding: 1rem 0;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-    }
+.hero h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
 
-    .stats div {
-      text-align: center;
-    }
+.hero p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
 
-    .stats div p {
-      margin-top: 0.3rem;
-      font-size: 0.8rem;
-    }
+.hero .buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
 
-    .why-adopt {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 1rem;
-    }
+.hero button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 2px solid #9a6a44;
+  background-color: #9a6a44;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .why-adopt h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
+.hero button.outline {
+  background-color: #fff;
+  color: #9a6a44;
+}
 
-    .why-adopt p {
-      font-size: 0.9rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      color: #555;
-    }
+.stats {
+  background-color: #9a6a44;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
 
-    .benefits {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+.stats div {
+  text-align: center;
+}
 
-    .benefit {
-      display: flex;
-      gap: 0.5rem;
-    }
+.stats div p {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+}
 
-    .benefit-icon {
-      font-size: 1.5rem;
-      color: #9a6a44;
-      min-width: 25px;
-    }
+.why-adopt {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+}
 
-    .benefit-text h4 {
-      font-size: 1rem;
-      margin-bottom: 0.2rem;
-    }
+.why-adopt h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
 
-    .benefit-text p {
-      font-size: 0.8rem;
-      color: #555;
-    }
+.why-adopt p {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #555;
+}
 
-    /* Tela 2 */
-    .how-to-adopt {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-    .how-to-adopt h2 {
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
+.benefit {
+  display: flex;
+  gap: 0.5rem;
+}
 
-    .how-to-adopt p.description {
-      text-align: center;
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-      color: #555;
-    }
+.benefit-icon {
+  font-size: 1.5rem;
+  color: #9a6a44;
+  min-width: 25px;
+}
 
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
+.benefit-text h4 {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
 
-    .step {
-      text-align: center;
-    }
+.benefit-text p {
+  font-size: 0.8rem;
+  color: #555;
+}
 
-    .step h3 {
-      color: #9a6a44;
-      font-size: 1.2rem;
-      margin-bottom: 0.3rem;
-    }
+/* Tela 2 */
+.how-to-adopt {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 2rem;
+}
 
-    .step p {
-      font-size: 0.85rem;
-      color: #555;
-    }
+.how-to-adopt h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.how-to-adopt p.description {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.step {
+  text-align: center;
+}
+
+.step h3 {
+  color: #9a6a44;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.step p {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Hero e botões */
+.hero .buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  background: #9a6a44;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+button.outline {
+  background: #fff;
+  border: 2px solid #9a6a44;
+  color: #9a6a44;
+}
+
+button:hover {
+  background: #fff;
+  color: #9a6a44;
+  border: 2px solid #9a6a44;
+}
+
+button.outline:hover {
+  background: #9a6a44;
+  color: #fff;
+}
+
+/* Cards de pets */
+.pets {
+  max-width: 500px;
+  margin: 30px auto;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.pets h2 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.pets p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.card-image {
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.tag {
+  position: absolute;
+  top: 10px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.tag.docil {
+  background: #a8e6a3;
+  color: #000;
+  left: 10px;
+}
+
+.tag.calma {
+  background: #cda3e6;
+  color: #000;
+  left: 10px;
+}
+
+.tag.macho {
+  background: #cce0ff;
+  color: #000;
+  right: 10px;
+}
+
+.tag.femea {
+  background: #feccff;
+  color: #000;
+  right: 10px;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.card-content .info {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card-content .descricao {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.card-content .localizacao {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.btn-ver-mais {
+  margin: 20px auto;
+}
+
+/* Histórias */
+.historias .historia {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+/*estrelas*/
+.estrelas {
+  display: flex;
+  gap: 6px;
+  flex-direction: row;
+}
+
+.estrela {
+  width: 23px;
+  height: 23px;
+  fill: #fff;
+  stroke: #9a6a44;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.estrela:hover,
+.estrela.hovered {
+  fill: #9a6a44;
+}
+
+.estrela.ativa {
+  fill: #9a6a44;
+  stroke: #9a6a44;
+}
+
+/* Acessibilidade */
+.acessibilidade .bloco {
+  margin-bottom: 1rem;
+}
+
+.acessibilidade .temas button {
+  margin: 0.3rem;
+}
+
+/* Contato */
+.contato form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.contato input,
+.contato textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.contato input:focus,
+.contato textarea:focus {
+  border-color: #9a6a44;
+  outline: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    top: 50px;
+    right: 0;
+    width: 100%;
+  }
+
+  section {
+    margin-top: 1rem;
+    width: 90%;
+  }
+
+  .hero .buttons {
+    flex-direction: column;
+  }
+
+  .historias .estrelas {
+    justify-content: flex-start;
+  }
+}
