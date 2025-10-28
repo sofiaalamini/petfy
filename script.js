@@ -13,8 +13,19 @@ function toggleMenu() {
 }
 
 document.querySelectorAll("#menu a").forEach((link) => {
-  link.addEventListener("click", () => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
     document.getElementById("menu").classList.remove("show");
+    
+    const targetId = link.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
   });
 });
 
@@ -220,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ======== ESTRELAS ========
 document.addEventListener("DOMContentLoaded", () => {
-  const historias = document.querySelectorAll(".historias .historia");
+  const historias = document.querySelectorAll(".historia-card");
 
   historias.forEach((historia) => {
     const estrelas = Array.from(historia.querySelectorAll(".estrela"));
@@ -243,6 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Clique
       estrela.addEventListener("click", () => {
+        const rating = index + 1;
         estrelas.forEach((e, i) => {
           if (i <= index) {
             e.classList.add("ativa");
@@ -250,15 +262,196 @@ document.addEventListener("DOMContentLoaded", () => {
             e.classList.remove("ativa");
           }
         });
+        
+        // Salva a avaliação no localStorage
+        const historiaId = historia.querySelector('h3').textContent;
+        localStorage.setItem(`petfy-rating-${historiaId}`, rating);
+        
+        // Mostra feedback visual
+        mostrarFeedbackAvaliacao(rating);
       });
     });
+    
+    // Carrega avaliações salvas
+    carregarAvaliacoesSalvas(historia, estrelas);
   });
 });
+
+function carregarAvaliacoesSalvas(historia, estrelas) {
+  const historiaId = historia.querySelector('h3').textContent;
+  const ratingSalva = localStorage.getItem(`petfy-rating-${historiaId}`);
+  
+  if (ratingSalva) {
+    const rating = parseInt(ratingSalva);
+    estrelas.forEach((e, i) => {
+      if (i < rating) {
+        e.classList.add("ativa");
+      } else {
+        e.classList.remove("ativa");
+      }
+    });
+  }
+}
+
+function mostrarFeedbackAvaliacao(rating) {
+  // Cria um elemento temporário para mostrar o feedback
+  const feedback = document.createElement('div');
+  feedback.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #9a6a44;
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+  `;
+  feedback.textContent = `Avaliação: ${rating} estrela${rating > 1 ? 's' : ''}`;
+  
+  document.body.appendChild(feedback);
+  
+  setTimeout(() => {
+    feedback.style.animation = 'slideOut 0.3s ease';
+    setTimeout(() => {
+      document.body.removeChild(feedback);
+    }, 300);
+  }, 2000);
+}
 // ======== ACESSIBILIDADE ========
-document.getElementById("fontRange").addEventListener("input", function () {
-  document.body.style.fontSize = this.value + "px";
+document.addEventListener("DOMContentLoaded", () => {
+  // Carrega configurações salvas
+  carregarConfiguracoes();
+  
+  // Event listener para o slider de fonte
+  const fontRange = document.getElementById("fontRange");
+  if (fontRange) {
+    fontRange.addEventListener("input", function () {
+      const fontSize = this.value + "px";
+      document.documentElement.style.fontSize = fontSize;
+      document.body.style.fontSize = fontSize;
+    });
+  }
+  
+  // Event listener para o formulário de contato
+  const contatoForm = document.getElementById("contato-form");
+  if (contatoForm) {
+    contatoForm.addEventListener("submit", enviarContato);
+  }
+  
+  // Event listeners para os botões de tema
+  const themeBtns = document.querySelectorAll('.theme-btn');
+  themeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tema = btn.dataset.theme;
+      setTheme(tema);
+      atualizarTemaAtivo(tema);
+    });
+  });
 });
 
 function setTheme(theme) {
   document.body.className = theme;
+  localStorage.setItem('petfy-theme', theme);
+}
+
+// ======== FUNÇÕES AUXILIARES ========
+function carregarConfiguracoes() {
+  // Carrega tema salvo
+  const temaSalvo = localStorage.getItem('petfy-theme');
+  if (temaSalvo) {
+    setTheme(temaSalvo);
+    atualizarTemaAtivo(temaSalvo);
+  }
+  
+  // Carrega tamanho da fonte salvo
+  const fonteSalva = localStorage.getItem('petfy-font-size');
+  if (fonteSalva) {
+    const fontSize = fonteSalva + 'px';
+    document.documentElement.style.fontSize = fontSize;
+    document.body.style.fontSize = fontSize;
+    const fontRange = document.getElementById("fontRange");
+    if (fontRange) {
+      fontRange.value = fonteSalva;
+    }
+  }
+  
+  // Carrega configurações de áudio salvas
+  const descImgSalva = localStorage.getItem('petfy-desc-img');
+  const feedbackSalvo = localStorage.getItem('petfy-feedback');
+  
+  if (descImgSalva === 'true') {
+    document.getElementById('descImg').checked = true;
+  }
+  if (feedbackSalvo === 'true') {
+    document.getElementById('feedback').checked = true;
+  }
+}
+
+function atualizarTemaAtivo(tema) {
+  const themeBtns = document.querySelectorAll('.theme-btn');
+  themeBtns.forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.dataset.theme === tema) {
+      btn.classList.add('active');
+    }
+  });
+}
+
+function salvarConfiguracoes() {
+  // Salva tamanho da fonte
+  const fontRange = document.getElementById("fontRange");
+  if (fontRange) {
+    localStorage.setItem('petfy-font-size', fontRange.value);
+  }
+  
+  // Salva configurações de áudio
+  const descImg = document.getElementById('descImg').checked;
+  const feedback = document.getElementById('feedback').checked;
+  
+  localStorage.setItem('petfy-desc-img', descImg);
+  localStorage.setItem('petfy-feedback', feedback);
+  
+  // Mostra feedback visual
+  const btnSalvar = document.querySelector('.btn-salvar');
+  const textoOriginal = btnSalvar.innerHTML;
+  
+  btnSalvar.innerHTML = 'Salvo!';
+  btnSalvar.style.background = '#28a745';
+  
+  setTimeout(() => {
+    btnSalvar.innerHTML = textoOriginal;
+    btnSalvar.style.background = '#9a6a44';
+  }, 2000);
+}
+
+function enviarContato(event) {
+  event.preventDefault();
+  
+  const nome = document.getElementById('nome-contato').value;
+  const email = document.getElementById('email-contato').value;
+  const assunto = document.getElementById('assunto-contato').value;
+  const mensagem = document.getElementById('mensagem-contato').value;
+  
+  // Simula envio (em uma aplicação real, aqui seria feita uma requisição para o servidor)
+  console.log('Mensagem enviada:', { nome, email, assunto, mensagem });
+  
+  // Mostra feedback visual
+  const btnEnviar = document.querySelector('.btn-enviar');
+  const textoOriginal = btnEnviar.innerHTML;
+  
+  btnEnviar.innerHTML = 'Enviado!';
+  btnEnviar.style.background = '#28a745';
+  
+  setTimeout(() => {
+    btnEnviar.innerHTML = textoOriginal;
+    btnEnviar.style.background = '#9a6a44';
+  }, 2000);
+  
+  // Limpa o formulário
+  document.getElementById('contato-form').reset();
+  
+  // Mostra alerta de sucesso
+  alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
 }
