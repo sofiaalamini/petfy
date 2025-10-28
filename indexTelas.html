@@ -21,7 +21,9 @@
       <div class="menu" onclick="toggleMenu()">&#9776;</div>
       <nav id="menu">
         <a href="#hero">Início</a>
+        <a href="#filtros">Filtros</a>
         <a href="#pets">Pets</a>
+        <a href="#adicionar-pet">Adicionar Pet</a>
         <a href="#historias">Histórias</a>
         <a href="#como-adotar">Como Adotar</a>
         <a href="#acessibilidade">Acessibilidade</a>
@@ -140,6 +142,71 @@
         </div>
       </div>
     </section>
+    <!-- SEÇÃO DE FILTROS -->
+    <section class="filtros" id="filtros">
+      <h2>Encontre seu pet ideal</h2>
+      <div class="filtros-container">
+        <div class="filtro-item">
+          <label>Tipo</label>
+          <select id="filtro-tipo">
+            <option value="">Qualquer</option>
+            <option value="cachorro">Cachorro</option>
+            <option value="gato">Gato</option>
+            <option value="outros">Outros</option>
+          </select>
+        </div>
+        
+        <div class="filtro-item">
+          <label>Porte</label>
+          <select id="filtro-porte">
+            <option value="">Qualquer</option>
+            <option value="pequeno">Pequeno</option>
+            <option value="medio">Médio</option>
+            <option value="grande">Grande</option>
+          </select>
+        </div>
+        
+        <div class="filtro-item">
+          <label>Idade</label>
+          <select id="filtro-idade">
+            <option value="">Qualquer</option>
+            <option value="filhote">Filhote</option>
+            <option value="adulto">Adulto</option>
+            <option value="idoso">Idoso</option>
+          </select>
+        </div>
+        
+        <div class="filtro-item">
+          <label>Sexo</label>
+          <select id="filtro-sexo">
+            <option value="">Qualquer</option>
+            <option value="macho">Macho</option>
+            <option value="femea">Fêmea</option>
+          </select>
+        </div>
+        
+        <div class="filtro-item">
+          <label>Castrado</label>
+          <select id="filtro-castrado">
+            <option value="">Qualquer</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+          </select>
+        </div>
+        
+        <div class="filtro-item">
+          <label>Vacinado</label>
+          <select id="filtro-vacinado">
+            <option value="">Qualquer</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+          </select>
+        </div>
+        
+        <button class="btn-filtrar" onclick="aplicarFiltros()">Filtrar</button>
+      </div>
+    </section>
+
     <!-- TELA 3 - PETS -->
     <section class="pets" id="pets">
       <h2>Conheça nossos pets</h2>
@@ -185,6 +252,73 @@
       </div>
 
       <button class="btn-ver-mais">Ver mais pets</button>
+    </section>
+
+    <!-- SEÇÃO ADICIONAR PET -->
+    <section class="adicionar-pet" id="adicionar-pet">
+      <h2>Adicionar pet para adoção</h2>
+      <form class="form-adicionar-pet" id="form-adicionar-pet">
+        <div class="upload-fotos">
+          <div class="upload-area" onclick="document.getElementById('fotos-pet').click()">
+            <div class="upload-icon">📷</div>
+            <p>Adicionar fotos do pet</p>
+            <input type="file" id="fotos-pet" multiple accept="image/*" style="display: none;">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="nome-pet" placeholder="Nome" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="idade-pet" placeholder="Idade" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="porte-pet" placeholder="Porte" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="especie-pet" placeholder="Espécie" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="sexo-pet" placeholder="Sexo" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="raca-pet" placeholder="Raça" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="vacinado-pet" placeholder="Vacinado" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="castrado-pet" placeholder="Castrado" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="localizacao-pet" placeholder="Localização" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <textarea id="descricao-pet" placeholder="Conte um pouco sobre o pet para ajudar na adoção!" required></textarea>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn-adicionar">Adicionar Pet</button>
+      </form>
     </section>
 
     <!-- TELA 4 - HISTÓRIAS -->
