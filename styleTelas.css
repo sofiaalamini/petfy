@@ -1136,8 +1136,20 @@ button.outline:hover {
 /* Responsividade */
 @media (max-width: 768px) {
   header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .menu {
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
   }
 
   nav {
