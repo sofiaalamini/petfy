@@ -229,96 +229,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// ======== ESTRELAS ========
-document.addEventListener("DOMContentLoaded", () => {
-  const historias = document.querySelectorAll(".historia-card");
-
-  historias.forEach((historia) => {
-    const estrelas = Array.from(historia.querySelectorAll(".estrela"));
-
-    estrelas.forEach((estrela, index) => {
-      // Hover
-      estrela.addEventListener("mouseenter", () => {
-        estrelas.forEach((e, i) => {
-          if (i <= index) {
-            e.classList.add("hovered");
-          } else {
-            e.classList.remove("hovered");
-          }
-        });
-      });
-
-      estrela.addEventListener("mouseleave", () => {
-        estrelas.forEach((e) => e.classList.remove("hovered"));
-      });
-
-      // Clique
-      estrela.addEventListener("click", () => {
-        const rating = index + 1;
-        estrelas.forEach((e, i) => {
-          if (i <= index) {
-            e.classList.add("ativa");
-          } else {
-            e.classList.remove("ativa");
-          }
-        });
-        
-        // Salva a avaliação no localStorage
-        const historiaId = historia.querySelector('h3').textContent;
-        localStorage.setItem(`petfy-rating-${historiaId}`, rating);
-        
-        // Mostra feedback visual
-        mostrarFeedbackAvaliacao(rating);
-      });
-    });
-    
-    // Carrega avaliações salvas
-    carregarAvaliacoesSalvas(historia, estrelas);
-  });
-});
+// ======== CONFIGURAÇÃO DE AVALIAÇÃO ========
+const RATINGS_READONLY = true;
+const DEFAULT_AVERAGE_RATING = 4;
 
 function carregarAvaliacoesSalvas(historia, estrelas) {
-  const historiaId = historia.querySelector('h3').textContent;
-  const ratingSalva = localStorage.getItem(`petfy-rating-${historiaId}`);
-  
-  if (ratingSalva) {
-    const rating = parseInt(ratingSalva);
-    estrelas.forEach((e, i) => {
-      if (i < rating) {
-        e.classList.add("ativa");
-      } else {
-        e.classList.remove("ativa");
-      }
-    });
-  }
+  const container = historia.querySelector('.estrelas');
+  if (container) container.classList.add('readonly');
+
+  estrelas.forEach((estrela, index) => {
+    if (index < DEFAULT_AVERAGE_RATING) {
+      estrela.classList.add("ativa");
+    } else {
+      estrela.classList.remove("ativa");
+    }
+  });
 }
 
-function mostrarFeedbackAvaliacao(rating) {
-  // Cria um elemento temporário para mostrar o feedback
-  const feedback = document.createElement('div');
-  feedback.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--accent-primary);
-    color: white;
-    padding: 0.8rem 1.2rem;
-    border-radius: 6px;
-    font-weight: bold;
-    z-index: 1000;
-    animation: slideIn 0.3s ease;
-  `;
-  feedback.textContent = `Avaliação: ${rating} estrela${rating > 1 ? 's' : ''}`;
-  
-  document.body.appendChild(feedback);
-  
-  setTimeout(() => {
-    feedback.style.animation = 'slideOut 0.3s ease';
-    setTimeout(() => {
-      document.body.removeChild(feedback);
-    }, 300);
-  }, 2000);
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const historia = document.querySelector('.historia');
+  const estrelas = historia.querySelectorAll('.estrela');
+  carregarAvaliacoesSalvas(historia, estrelas);
+});
 // ======== ACESSIBILIDADE ========
 document.addEventListener("DOMContentLoaded", () => {
   // Carrega configurações salvas

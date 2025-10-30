@@ -296,11 +296,13 @@ section {
 .benefit-text h4 {
   font-size: 1rem;
   margin-bottom: 0.2rem;
+  text-align: left;
 }
 
 .benefit-text p {
   font-size: 0.8rem;
   color: var(--text-secondary);
+  text-align: left;
 }
 
 /* Tela 2 */
@@ -786,19 +788,19 @@ button.outline:hover {
   fill: var(--bg-white);
   stroke: var(--accent-primary);
   stroke-width: 2;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.estrela:hover,
-.estrela.hovered {
-  fill: var(--accent-primary);
+  cursor: default;
+  transition: none;
 }
 
 .estrela.ativa {
   fill: var(--accent-primary);
   stroke: var(--accent-primary);
 }
+
+.estrelas.readonly {
+  pointer-events: none;
+}
+
 
 /* Animações para feedback das estrelas */
 @keyframes slideIn {
@@ -1312,7 +1314,7 @@ button.outline:hover {
   box-shadow: 0 4px 15px rgba(154, 106, 68, 0.4);
 }
 
-/* Overrides for Daltonic theme to avoid blue backgrounds */
+/* Configurações alternativas para o tema Daltonic para evitar fundos azuis */
 body.daltonico .upload-area {
   background-color: var(--bg-white);
   border-color: var(--accent-primary);
