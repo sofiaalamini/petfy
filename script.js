@@ -300,7 +300,7 @@ function mostrarFeedbackAvaliacao(rating) {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: #9a6a44;
+    background: var(--accent-primary);
     color: white;
     padding: 0.8rem 1.2rem;
     border-radius: 6px;
@@ -418,11 +418,11 @@ function salvarConfiguracoes() {
   const textoOriginal = btnSalvar.innerHTML;
   
   btnSalvar.innerHTML = 'Salvo!';
-  btnSalvar.style.background = '#28a745';
+  btnSalvar.style.background = 'var(--accent-primary)';
   
   setTimeout(() => {
     btnSalvar.innerHTML = textoOriginal;
-    btnSalvar.style.background = '#9a6a44';
+    btnSalvar.style.background = 'var(--accent-primary)';
   }, 2000);
 }
 
@@ -442,11 +442,11 @@ function enviarContato(event) {
   const textoOriginal = btnEnviar.innerHTML;
   
   btnEnviar.innerHTML = 'Enviado!';
-  btnEnviar.style.background = '#28a745';
+  btnEnviar.style.background = 'var(--accent-primary)';
   
   setTimeout(() => {
     btnEnviar.innerHTML = textoOriginal;
-    btnEnviar.style.background = '#9a6a44';
+    btnEnviar.style.background = 'var(--accent-primary)';
   }, 2000);
   
   // Limpa o formulário
