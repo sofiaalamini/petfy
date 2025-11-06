@@ -39,22 +39,22 @@
         Junte-se a nós e mude uma vida!
       </p>
       <div class="buttons">
-        <button>Conheça nossos pets</button>
-        <button class="outline">Como adotar</button>
+        <button onclick="scrollToSection('pets')">Conheça nossos pets</button>
+        <button class="outline" onclick="scrollToSection('como-adotar')">Como adotar</button>
       </div>
     </section>
 
     <section class="stats" id="estatisticas">
       <div>
-        <h2>0</h2>
+        <h2>3</h2>
         <p>Pets adotados</p>
       </div>
       <div>
-        <h2>0</h2>
+        <h2>7</h2>
         <p>Pets disponíveis</p>
       </div>
       <div>
-        <h2>0</h2>
+        <h2>3</h2>
         <p>Famílias felizes</p>
       </div>
     </section>
@@ -328,7 +328,7 @@
         <p class="historias-subtitle">Veja o que nossos adotantes têm a dizer sobre suas experiências</p>
 
         <div class="historias-grid">
-          <div class="historia-card">
+          <div class="historia-card" data-rating="5">
             <div class="historia-header">
               <div class="historia-avatar">AC</div>
               <div class="historia-info">
@@ -358,7 +358,7 @@
             </div>
           </div>
 
-          <div class="historia-card">
+          <div class="historia-card" data-rating="4">
             <div class="historia-header">
               <div class="historia-avatar">CE</div>
               <div class="historia-info">
@@ -388,7 +388,7 @@
             </div>
           </div>
 
-          <div class="historia-card">
+          <div class="historia-card" data-rating="5">
             <div class="historia-header">
               <div class="historia-avatar">FS</div>
               <div class="historia-info">
@@ -551,6 +551,42 @@
         </form>
       </div>
     </section>
+    
+    <!-- MODAL DE ADOÇÃO -->
+    <div id="modal-adocao" class="modal-adocao">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Formulário de Adoção</h2>
+        <p class="modal-subtitle">Preencha os dados para iniciar o processo de adoção</p>
+        <form id="form-adocao" class="form-adocao">
+          <div class="form-group">
+            <label for="nome-adotante">Nome completo</label>
+            <input type="text" id="nome-adotante" placeholder="Digite seu nome completo" required>
+          </div>
+          <div class="form-group">
+            <label for="email-adotante">Email</label>
+            <input type="email" id="email-adotante" placeholder="seu@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="telefone-adotante">Telefone</label>
+            <input type="tel" id="telefone-adotante" placeholder="(00) 00000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="endereco-adotante">Endereço</label>
+            <input type="text" id="endereco-adotante" placeholder="Rua, número, bairro" required>
+          </div>
+          <div class="form-group">
+            <label for="motivo-adocao">Por que você quer adotar este pet?</label>
+            <textarea id="motivo-adocao" placeholder="Conte-nos um pouco sobre você e sua motivação para adotar..." required></textarea>
+          </div>
+          <div class="modal-buttons">
+            <button type="button" class="btn-cancelar">Cancelar</button>
+            <button type="submit" class="btn-confirmar">Enviar solicitação</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
     <script src="script.js"></script>
   </body>
 </html>

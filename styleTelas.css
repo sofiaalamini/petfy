@@ -520,6 +520,24 @@ button.outline:hover {
   left: 10px;
 }
 
+.tag.brincalhao {
+  background: #ffd93d;
+  color: #000;
+  left: 10px;
+}
+
+.tag.carinhoso {
+  background: #ff9a9e;
+  color: #000;
+  left: 10px;
+}
+
+.tag.energico {
+  background: #ff6b6b;
+  color: #fff;
+  left: 10px;
+}
+
 .tag.macho {
   background: #cce0ff;
   color: #000;
@@ -954,7 +972,7 @@ button.outline:hover {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  border: 2px solid var(--border-color);
+  border: 2px solid transparent;
   border-radius: 8px;
   background: var(--bg-white);
   cursor: pointer;
@@ -968,8 +986,11 @@ button.outline:hover {
 }
 
 .theme-btn.active {
-  border-color: var(--accent-primary);
   background: var(--bg-secondary);
+}
+
+.theme-btn.active[data-theme="daltonico"] {
+  border-color: var(--accent-primary);
 }
 
 .theme-preview {
@@ -982,20 +1003,23 @@ button.outline:hover {
 
 .theme-preview.padrao {
   background: linear-gradient(45deg, #fff 50%, var(--accent-primary) 50%);
+  transition: all 0.3s ease;
 }
 
 .theme-preview.escuro {
   background: linear-gradient(45deg, #333 50%, #666 50%);
+  transition: all 0.3s ease;
 }
 
 .theme-preview.daltonico {
   background: linear-gradient(45deg, #B1A26E 50%, #7E7244 50%);
+  transition: all 0.3s ease;
 }
 
 .theme-btn span {
   font-size: 0.8rem;
   font-weight: 500;
-  color: #555;
+  color: var(--text-primary);
 }
 
 /* Checkboxes customizados */
@@ -1009,7 +1033,7 @@ button.outline:hover {
 }
 
 .checkbox-label:hover {
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
 }
 
 .custom-checkbox {
@@ -1019,7 +1043,7 @@ button.outline:hover {
 .checkmark {
   width: 20px;
   height: 20px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border-color);
   border-radius: 4px;
   margin-right: 0.8rem;
   position: relative;
@@ -1029,8 +1053,8 @@ button.outline:hover {
 }
 
 .custom-checkbox:checked + .checkmark {
-  background-color: #9a6a44;
-  border-color: #9a6a44;
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
 }
 
 .custom-checkbox:checked + .checkmark::after {
@@ -1051,14 +1075,14 @@ button.outline:hover {
 .checkbox-title {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 0.2rem;
 }
 
 .checkbox-desc {
   display: block;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.4;
 }
 
@@ -1324,4 +1348,186 @@ body.daltonico .upload-area:hover {
 }
 body.daltonico .theme-btn.active {
   background: var(--bg-white);
+  border-color: var(--accent-primary);
+}
+
+/* Modal de Adoção */
+.modal-adocao {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-adocao.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: var(--bg-white);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  line-height: 1;
+}
+
+.close-modal:hover {
+  color: var(--accent-primary);
+}
+
+.modal-content h2 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.modal-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.form-adocao {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-adocao .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-adocao label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-adocao input,
+.form-adocao textarea {
+  padding: 0.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: var(--bg-white);
+  color: var(--text-primary);
+  font-family: "Lato", sans-serif;
+}
+
+.form-adocao input:focus,
+.form-adocao textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(154, 106, 68, 0.1);
+}
+
+.form-adocao textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-cancelar {
+  flex: 1;
+  padding: 0.8rem 1.5rem;
+  background: var(--bg-white);
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-cancelar:hover {
+  background: var(--bg-secondary);
+  transform: translateY(-2px);
+}
+
+.btn-confirmar {
+  flex: 1;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: var(--bg-white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-confirmar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(154, 106, 68, 0.4);
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
+  
+  .modal-buttons {
+    flex-direction: column;
+  }
+  
+  .btn-cancelar,
+  .btn-confirmar {
+    width: 100%;
+  }
 }

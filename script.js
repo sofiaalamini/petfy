@@ -7,6 +7,17 @@ function entrar() {
   window.location.href = "indexTelas.html";
 }
 
+// ======== NAVEGAÇÃO POR SEÇÕES ========
+function scrollToSection(sectionId) {
+  const targetElement = document.getElementById(sectionId);
+  if (targetElement) {
+    targetElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+}
+
 // ======== MENU MOBILE ========
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("show");
@@ -43,10 +54,10 @@ let petsData = [
     especie: "Gato Malhado Comum",
     raca: "Malhado Comum",
     anos: "3 anos",
-    descricao: "Chicle é um amor de gato, super brincalhão e sociável. Adora crianças e outros animais.",
+    descricao: "Chicle é um amor de gato, super brincalhão e sociável. Adora crianças e outros animais. Sempre está pronto para uma brincadeira!",
     localizacao: "Cascavel - PR",
     imagem: "./assets/chicle.avif",
-    temperamento: "docil"
+    temperamento: "brincalhao"
   },
   {
     id: 2,
@@ -60,10 +71,10 @@ let petsData = [
     especie: "Vira-Lata",
     raca: "Vira-Lata",
     anos: "5 anos",
-    descricao: "Lolla é muito amigável e carinhosa, ótima companhia para toda a família.",
+    descricao: "Lolla é muito amigável e carinhosa, ótima companhia para toda a família. É tranquila e adora receber carinho. Perfeita para um lar acolhedor.",
     localizacao: "Rio de Janeiro - RJ",
     imagem: "./assets/lolla.webp",
-    temperamento: "calma"
+    temperamento: "carinhoso"
   }
 ];
 
@@ -89,7 +100,7 @@ function criarCardPet(pet) {
   card.classList.add("card");
   card.setAttribute("data-pet-id", pet.id);
   
-  const temperamentoClass = pet.temperamento === "docil" ? "docil" : "calma";
+  const temperamentoClass = pet.temperamento || "docil";
   const sexoClass = pet.sexo === "macho" ? "macho" : "femea";
   
   card.innerHTML = `
@@ -106,6 +117,12 @@ function criarCardPet(pet) {
       <button class="btn-adotar">Quero adotar</button>
     </div>
   `;
+  
+  // Adiciona event listener ao botão "Quero adotar"
+  const btnAdotar = card.querySelector(".btn-adotar");
+  if (btnAdotar) {
+    btnAdotar.addEventListener("click", abrirModalAdocao);
+  }
   
   return card;
 }
@@ -199,26 +216,109 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnVerMais) {
     btnVerMais.addEventListener("click", () => {
-      const novoPet = {
-        id: petsData.length + 1,
-        nome: "Thor",
-        tipo: "cachorro",
-        porte: "medio",
-        idade: "adulto",
-        sexo: "macho",
-        castrado: "sim",
-        vacinado: "sim",
-        especie: "Vira-Lata",
-        raca: "Vira-Lata",
-        anos: "2 anos",
-        descricao: "Thor é um cãozinho cheio de energia, adora brincar e fazer novos amigos. Está ansioso para encontrar um lar amoroso.",
-        localizacao: "Curitiba - PR",
-        imagem: "./assets/thor.jpg",
-        temperamento: "docil"
-      };
+      // Lista de pets adicionais para adicionar
+      const baseId = petsData.length;
+      const novosPets = [
+        {
+          id: baseId + 1,
+          nome: "Thor",
+          tipo: "cachorro",
+          porte: "medio",
+          idade: "adulto",
+          sexo: "macho",
+          castrado: "sim",
+          vacinado: "sim",
+          especie: "Vira-Lata",
+          raca: "Vira-Lata",
+          anos: "2 anos",
+          descricao: "Thor é um cãozinho cheio de energia e muito brincalhão. Adora correr no parque e fazer novos amigos. Perfeito para famílias ativas!",
+          localizacao: "Curitiba - PR",
+          imagem: "./assets/thor.jpg",
+          temperamento: "energico"
+        },
+        {
+          id: baseId + 2,
+          nome: "Mel",
+          tipo: "cachorro",
+          porte: "pequeno",
+          idade: "filhote",
+          sexo: "femea",
+          castrado: "nao",
+          vacinado: "sim",
+          especie: "Vira-Lata",
+          raca: "Vira-Lata",
+          anos: "6 meses",
+          descricao: "Mel é uma filhotinha super brincalhona e curiosa. Adora explorar e brincar com brinquedos. Está aprendendo comandos básicos!",
+          localizacao: "São Paulo - SP",
+          imagem: "./assets/vitalata.webp",
+          temperamento: "brincalhao"
+        },
+        {
+          id: baseId + 3,
+          nome: "Luna",
+          tipo: "gato",
+          porte: "pequeno",
+          idade: "adulto",
+          sexo: "femea",
+          castrado: "sim",
+          vacinado: "sim",
+          especie: "Gato Siamês",
+          raca: "Siamês",
+          anos: "4 anos",
+          descricao: "Luna é uma gata muito tranquila e carinhosa. Adora receber carinho e ficar no colo. Perfeita para quem busca um companheiro calmo e afetuoso.",
+          localizacao: "Belo Horizonte - MG",
+          imagem: "./assets/siames.jpg",
+          temperamento: "carinhoso"
+        },
+        {
+          id: baseId + 4,
+          nome: "Max",
+          tipo: "cachorro",
+          porte: "grande",
+          idade: "adulto",
+          sexo: "macho",
+          castrado: "sim",
+          vacinado: "sim",
+          especie: "Labrador",
+          raca: "Labrador Retriever",
+          anos: "3 anos",
+          descricao: "Max é um cão muito dócil, leal e obediente. Adora atividades ao ar livre, nadar e brincar com crianças. É muito inteligente e aprende rápido!",
+          localizacao: "Porto Alegre - RS",
+          imagem: "./assets/labrador.jpg",
+          temperamento: "docil"
+        },
+        {
+          id: baseId + 5,
+          nome: "Bolinha",
+          tipo: "gato",
+          porte: "medio",
+          idade: "idoso",
+          sexo: "macho",
+          castrado: "sim",
+          vacinado: "sim",
+          especie: "Gato Persa",
+          raca: "Persa",
+          anos: "8 anos",
+          descricao: "Bolinha é um gato idoso muito tranquilo e independente. Prefere ambientes calmos e adora descansar ao sol. Ideal para pessoas que buscam um companheiro sossegado.",
+          localizacao: "Florianópolis - SC",
+          imagem: "./assets/persa.png",
+          temperamento: "calma"
+        }
+      ];
       
-      petsData.push(novoPet);
+      // Adiciona todos os novos pets
+      novosPets.forEach(pet => {
+        petsData.push(pet);
+      });
+      
+      // Renderiza todos os pets
       renderizarPets();
+      
+      // Opcional: desabilita o botão após adicionar todos os pets disponíveis
+      // btnVerMais.style.opacity = "0.5";
+      // btnVerMais.style.cursor = "not-allowed";
+      // btnVerMais.disabled = true;
+      // btnVerMais.textContent = "Todos os pets carregados";
     });
   }
 
@@ -227,18 +327,67 @@ document.addEventListener("DOMContentLoaded", () => {
   if (formAdicionarPet) {
     formAdicionarPet.addEventListener("submit", adicionarPet);
   }
+  
+  // Reabilita o botão "Ver mais" quando um novo pet é adicionado pelo formulário
+  const originalAdicionarPet = adicionarPet;
+  window.adicionarPet = function(event) {
+    originalAdicionarPet(event);
+    const btnVerMais = document.querySelector(".btn-ver-mais");
+    if (btnVerMais) {
+      btnVerMais.style.opacity = "1";
+      btnVerMais.style.cursor = "pointer";
+      btnVerMais.disabled = false;
+      btnVerMais.textContent = "Ver mais pets";
+    }
+  };
+
+  // Adiciona event listeners para os botões "Quero adotar"
+  const botoesAdotar = document.querySelectorAll(".btn-adotar");
+  botoesAdotar.forEach(botao => {
+    botao.addEventListener("click", abrirModalAdocao);
+  });
+
+  // Event listener para fechar o modal
+  const modalAdocao = document.getElementById("modal-adocao");
+  const closeModal = document.querySelector(".close-modal");
+  const btnCancelar = document.querySelector(".btn-cancelar");
+
+  if (closeModal) {
+    closeModal.addEventListener("click", fecharModalAdocao);
+  }
+
+  if (btnCancelar) {
+    btnCancelar.addEventListener("click", fecharModalAdocao);
+  }
+
+  // Fecha o modal ao clicar fora dele
+  if (modalAdocao) {
+    modalAdocao.addEventListener("click", function(event) {
+      if (event.target === modalAdocao) {
+        fecharModalAdocao();
+      }
+    });
+  }
+
+  // Event listener para o formulário de adoção
+  const formAdocao = document.getElementById("form-adocao");
+  if (formAdocao) {
+    formAdocao.addEventListener("submit", enviarSolicitacaoAdocao);
+  }
 });
 
 // ======== CONFIGURAÇÃO DE AVALIAÇÃO ========
 const RATINGS_READONLY = true;
-const DEFAULT_AVERAGE_RATING = 4;
 
-function carregarAvaliacoesSalvas(historia, estrelas) {
-  const container = historia.querySelector('.estrelas');
+function carregarAvaliacoesSalvas(historiaCard, estrelas) {
+  const container = historiaCard.querySelector('.estrelas');
   if (container) container.classList.add('readonly');
 
+  // Lê a avaliação do atributo data-rating do card, ou usa 4 como padrão
+  const rating = parseInt(historiaCard.getAttribute('data-rating')) || 4;
+
   estrelas.forEach((estrela, index) => {
-    if (index < DEFAULT_AVERAGE_RATING) {
+    if (index < rating) {
       estrela.classList.add("ativa");
     } else {
       estrela.classList.remove("ativa");
@@ -247,9 +396,11 @@ function carregarAvaliacoesSalvas(historia, estrelas) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const historia = document.querySelector('.historia');
-  const estrelas = historia.querySelectorAll('.estrela');
-  carregarAvaliacoesSalvas(historia, estrelas);
+  const historiaCards = document.querySelectorAll('.historia-card');
+  historiaCards.forEach(historiaCard => {
+    const estrelas = historiaCard.querySelectorAll('.estrela');
+    carregarAvaliacoesSalvas(historiaCard, estrelas);
+  });
 });
 // ======== ACESSIBILIDADE ========
 document.addEventListener("DOMContentLoaded", () => {
@@ -386,4 +537,49 @@ function enviarContato(event) {
   
   // Mostra alerta de sucesso
   alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+}
+
+// ======== FUNÇÕES DO MODAL DE ADOÇÃO ========
+function abrirModalAdocao(event) {
+  const modal = document.getElementById("modal-adocao");
+  if (modal) {
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden"; // Previne scroll do body
+  }
+}
+
+function fecharModalAdocao() {
+  const modal = document.getElementById("modal-adocao");
+  if (modal) {
+    modal.classList.remove("show");
+    document.body.style.overflow = "auto"; // Restaura scroll do body
+  }
+}
+
+function enviarSolicitacaoAdocao(event) {
+  event.preventDefault();
+  
+  const nome = document.getElementById('nome-adotante').value;
+  const email = document.getElementById('email-adotante').value;
+  const telefone = document.getElementById('telefone-adotante').value;
+  const endereco = document.getElementById('endereco-adotante').value;
+  const motivo = document.getElementById('motivo-adocao').value;
+  
+  // Simula envio (em uma aplicação real, aqui seria feita uma requisição para o servidor)
+  console.log('Solicitação de adoção enviada:', { nome, email, telefone, endereco, motivo });
+  
+  // Mostra feedback visual
+  const btnConfirmar = document.querySelector('.btn-confirmar');
+  const textoOriginal = btnConfirmar.innerHTML;
+  
+  btnConfirmar.innerHTML = 'Enviado!';
+  btnConfirmar.style.background = 'var(--accent-primary)';
+  
+  setTimeout(() => {
+    btnConfirmar.innerHTML = textoOriginal;
+    btnConfirmar.style.background = '';
+    fecharModalAdocao();
+    document.getElementById('form-adocao').reset();
+    alert('Solicitação de adoção enviada com sucesso! Entraremos em contato em breve.');
+  }, 2000);
 }
